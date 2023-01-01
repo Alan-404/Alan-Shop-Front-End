@@ -1,0 +1,14 @@
+.img-style{
+    border-radius: 50%;
+    width: 10vh;
+    height: 5vw;
+}
+
+.mybtn{
+    border: none;
+    color: blue;
+}
+
+.borderbtn{
+    border: 5px;
+}

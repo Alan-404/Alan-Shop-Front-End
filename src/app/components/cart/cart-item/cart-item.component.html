@@ -1,0 +1,33 @@
+<div *ngIf="cartItem" class="bg-light my-3 p-2 d-flex">
+    <div class="d-flex">
+        <mat-checkbox [checked]="this.cartItem.cart.status" (change)="checkStatus($event, cartItem)" class="mt-4"></mat-checkbox>
+        <img class="img-style mx-4" src="http://localhost:8080/product/image/{{cartItem.product.id}}?index=0"/>
+    </div>
+    <div class="mx-4 w-100">
+        <h2>{{cartItem.product.name}}</h2>
+        <hr />
+        <div class="d-flex justify-content-between">
+            <div class="w-25">
+                <div *ngIf="cartItem.discount.value != 0">
+                    <h3 class="text-warning">{{cal(cartItem.product.price, cartItem.discount.value).toLocaleString()}} đ</h3>
+                    <div class="d-flex">
+                        <p class="mx-3 text-decoration-line-through">{{cartItem.product.price.toLocaleString()}} đ</p>
+                        <p class="text-danger">-{{cartItem.discount.value}}%</p>
+                    </div>
+                </div>
+                <h3 *ngIf="cartItem.discount.value == 0" class="text-info">{{cartItem.product.price.toLocaleString()}} đ</h3>
+            </div>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle (click)="minusItem()"><mat-icon>indeterminate_check_box</mat-icon></mat-button-toggle>
+                <!-- <mat-button-toggle>Italic</mat-button-toggle> -->
+                <mat-form-field>
+                    <input class="text-center" matInput type="number" min="0" max="{{this.cartItem.warehouse.quantity}}" [value]="this.cartItem.cart.quantity">
+                </mat-form-field>
+                <mat-button-toggle (click)="plusItem()"><mat-icon>control_point</mat-icon></mat-button-toggle>
+            </mat-button-toggle-group>
+            <h3>{{(cal(cartItem.product.price, cartItem.discount.value)*this.cartItem.cart.quantity).toLocaleString()}} đ</h3>
+            <mat-icon style="cursor: pointer;" (click)="deleteCartItem()" class="text-danger">delete</mat-icon>
+        </div>
+    </div>
+</div>
+<app-confirm-delete-cart *ngIf="confirmDelete" (handleForm)="handleConfirmDeleteForm()" (successDeleteCart)="this.actionUpdate.emit()" [item]="this.cartItem"></app-confirm-delete-cart>

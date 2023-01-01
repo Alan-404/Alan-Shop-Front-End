@@ -1,0 +1,12 @@
+<div class="d-flex">
+    <div>
+        <div class="w-25" *ngFor="let user of this.users">
+            <app-user-chat-item (click)="goChatRoom(user.id)" *ngIf="this.checkSameUserId(user.id) == false" [user]="user"></app-user-chat-item>
+        </div>
+    </div>
+    &#160;&#160;&#160;&#160;&#160;&#160;
+    <div class="w-50">
+        <router-outlet></router-outlet>
+    </div>
+    
+</div>

@@ -1,0 +1,39 @@
+<h2>Quản Lý Sản Phẩm Của Bạn</h2>
+<hr />
+<div>
+    <div *ngFor="let item of this.productItems" style="border-radius: 10px;" class="bg-light p-2 mb-5 d-flex">
+        <div style="width: 15%;">
+            <img [routerLink]="['/home/product']" [queryParams]="{'id': item.product.id}" class="img-style" src="http://localhost:8080/product/image/{{item.product.id}}?index=0"/>
+        </div>
+        <div style="width: 100%; cursor: pointer;">
+            <div class="d-flex justify-content-between">
+                <h2 [routerLink]="['/home/product']" [queryParams]="{'id': item.product.id}">{{item.product.name}}</h2>
+                <div class="d-flex">
+                    <div *ngFor="let category of this.item.categories" class="mx-2">
+                        <app-category-item [category]="category"></app-category-item>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+                <div>
+                    <p>Giá: {{item.product.price.toLocaleString()}}</p>
+                </div>
+                <div>
+                    <p>Giảm Giá: {{item.discount.value}}%</p>
+                </div>
+                <div>
+                    <p *ngIf="item.warehouse.quantity != 0">Tồn Kho: {{item.warehouse.quantity}}</p>
+                    <p class="text-danger" *ngIf="item.warehouse.quantity == 0">Hết Hàng</p>
+                </div>
+                <div>
+                    <p class="text-info" *ngIf="item.product.status">Còn Kinh Doanh</p>
+                    <p class="text-danger" *ngIf="!item.product.status">Ngừng Kinh Doanh</p>
+                </div>
+                <div>
+                    <button [routerLink]="['/home/editProduct']" [queryParams]="{'id': item.product.id}" mat-raised-button color="primary"><mat-icon>edit</mat-icon> Sửa Thông Tin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.image-style{
+    width: 7vw;
+    height: 10vh;
+}
+
+.lb-quantity{
+    position: absolute;
+    background-color: gainsboro;
+    border-radius: 0 0 10px 0;
+}

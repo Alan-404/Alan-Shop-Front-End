@@ -1,0 +1,8 @@
+<h1>Thanh Toán Đơn Hàng</h1>
+<hr />
+<div class="d-flex">
+    <div class="w-75">
+        <app-payment-item *ngFor="let item of this.cartItems" [item]="item"></app-payment-item>
+    </div>
+    <app-info-checkout (submitOrder)="orderAction()" class="mx-2 w-25 info-form" [carts]="this.cartItems"></app-info-checkout>
+</div>

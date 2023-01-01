@@ -1,0 +1,17 @@
+<h2>Giỏ Hàng Của Tôi</h2>
+<hr />
+<div>
+    <div class="d-flex">
+        <div class="w-75">
+            <div class="bg-light p-2 d-flex">
+                <mat-checkbox [checked]="checked" (change)="updateAllCarts($event)"></mat-checkbox>
+                <h3 class="mx-4">Tất Cả {{getNumProducts()}} Sản Phẩm Trong Giỏ Hàng</h3>
+            </div>
+            <app-cart-item (actionUpdate)="this.updateCart()" *ngFor="let item of this.carts; let index = index"
+                [cartItem]="item"></app-cart-item>
+        </div>
+        &#160;&#160;&#160;&#160;&#160;
+        <app-info-checkout class="w-25" [carts]="this.carts"></app-info-checkout>
+        
+    </div>
+</div>

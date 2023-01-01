@@ -1,0 +1,15 @@
+.img-style{
+    height: 18vh;
+    width: 5vw;
+}
+
+.price-discount{
+    color: red;
+}
+
+.discount-label{
+    position:absolute;
+    background-color: yellow;
+    color: red;
+    width: 20%;
+}

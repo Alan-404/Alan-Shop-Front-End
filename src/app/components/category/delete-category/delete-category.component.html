@@ -1,0 +1,8 @@
+<app-dark-overlay></app-dark-overlay>
+<div class="confirm-form p-4">
+    <h3>Confirm Delete Category: {{category.name}}</h3>
+    <div>
+        <button (click)="deleteCategory(category.id)" class="mt-4" mat-stroked-button color="accent">Confirm</button>
+        <button (click)="closeDeleteForm()" class="mt-4" mat-stroked-button color="accent">Cancel</button>
+    </div>
+</div>

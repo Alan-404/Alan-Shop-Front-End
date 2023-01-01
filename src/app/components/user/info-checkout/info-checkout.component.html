@@ -1,0 +1,19 @@
+<div class="w-100 bg-light p-2 d-flex flex-column justify-content-between">
+    <div>
+        <h2>Giao Tới</h2>
+        <hr />
+        <div class="d-flex justify-content-between">
+            <h3><mat-icon> person_pin</mat-icon> {{this.user.firstName + " " + this.user.lastName}}</h3>
+            <h3><mat-icon>phone_in_talk</mat-icon> {{hide(this.user.phone)}}</h3>
+        </div>
+        <div class="d-flex">
+            <mat-icon>home</mat-icon>
+            <h4>{{this.user.address}}</h4>
+        </div>
+        <hr />
+        <h1>Tổng Tiền</h1>
+        <h1 class="text-danger" *ngIf="calSumPrice() != 0">{{calSumPrice().toLocaleString()}} đ</h1>
+        <h3 class="text-info" *ngIf="calSumPrice() == 0">Hãy Chọn Sản Phẩm</h3>
+    </div>
+    <button (click)="submitButton()" mat-flat-button color="accent">{{this.contentBtn}}</button>
+</div>

@@ -1,0 +1,15 @@
+.img-style{
+    width: 30vw;
+    height: 50vh;
+}
+
+.img-item{
+    width: 5vw;
+    height: 10vh;
+    cursor: pointer;
+}
+
+.price-frame{
+    background-color: rgba(230, 230, 203, 0.4);
+    border-radius: 14px;
+}

@@ -1,0 +1,15 @@
+<div class="mt-3 p-4 d-flex flex-column">
+    <h1>Detail Category Form</h1>
+    <mat-form-field class="example-full-width">
+        <mat-label>Category's Name</mat-label>
+        <input (change)="getInfor($event)" name="name" matInput value="{{category.name}}">
+    </mat-form-field>
+    <div>
+        <div>
+            <label for="upload-photo"><mat-icon>add_a_photo</mat-icon></label>
+            <input (change)="uploadImage($event)" type="file" name="photo" id="upload-photo" />
+        </div>
+        <img [src]="this.imgShow" class="img-show" />
+    </div>
+    <button (click)="editCategory()" class="mt-4" mat-stroked-button color="accent">Save Category</button>
+</div>

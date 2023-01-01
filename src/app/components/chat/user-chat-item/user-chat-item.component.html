@@ -1,0 +1,6 @@
+<button mat-stroked-button color="primary" *ngIf="this.user.id != ''" class="p-2">
+    <div class="d-flex">
+        <img class="img-style" src="http://localhost:8080/user/avatar?id={{this.user.id}}"/>
+        <h2 class="mt-2 mx-3">{{this.user.firstName + " " + this.user.lastName}}</h2>
+    </div>
+</button>

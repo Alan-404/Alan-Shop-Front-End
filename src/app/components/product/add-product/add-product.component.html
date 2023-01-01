@@ -1,0 +1,26 @@
+<h1>Add Product Page</h1>
+<div class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Product's Name</mat-label>
+        <input (change)="getInfor($event)" name="name" matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Product's Description</mat-label>
+        <textarea (change)="getInfor($event)" name="description" matInput placeholder="Enter description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Product's Price</mat-label>
+        <input (change)="getInfor($event)" type="number" name="price" matInput>
+    </mat-form-field>
+    <mat-select class="mt-2" (valueChange)="getOptions($event)" placeholder="Toppings" multiple>
+        <mat-option *ngFor="let topping of toppingList" [value]="topping.id">{{topping.name}}</mat-option>
+    </mat-select>
+    <div class="mt-2">
+        <div>
+            <label for="upload-photo"><mat-icon>add_a_photo</mat-icon></label>
+            <input (change)="uploadImage($event)" type="file" name="photo" id="upload-photo" />
+        </div>
+        <img *ngFor="let img of this.imgsShow" [src]="img" class="img-show mx-2" />
+    </div>
+    <button (click)="submitAddProduct()" class="mt-2" mat-raised-button color="primary">Register</button>
+</div>

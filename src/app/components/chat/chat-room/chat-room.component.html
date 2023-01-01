@@ -1,0 +1,17 @@
+<div *ngIf="this.user.id != ''">
+    <div class="border w-100 d-flex p-3">
+        <img class="img-style" src="http://localhost:8080/user/avatar?id={{this.user.id}}"/>
+        <h3 class="mx-2">{{this.user.firstName + " " + this.user.lastName}}</h3>
+    </div>
+    <div class="mt-3" *ngFor="let item of this.messages">
+        <div class="d-flex flex-row-reverse">
+            <p *ngIf="item.senderId == this.getMyId()" class="p-2 my-msg-item">{{item.message}}</p>
+        </div>
+        <p *ngIf="item.senderId != this.getMyId()" class="d-flex p-2 msg-item">{{item.message}}</p>
+        
+    </div>
+    <div class="mt-4">
+        <input (keyup.enter)="actionSend()" placeholder="Aa" class="input-message p-2" [value]="this.inputMessage" (change)="actionInput($event)"/>
+        <!-- <button class="mx-2 p-2" (click)="this.actionSend()">Send</button> -->
+    </div>
+</div>

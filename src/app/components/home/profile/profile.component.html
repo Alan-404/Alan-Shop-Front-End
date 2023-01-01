@@ -1,0 +1,21 @@
+<div class="d-flex">
+    <div class="d-flex flex-column w-25">
+        <div class="d-flex">
+            <img *ngIf="this.user.id != ''" class="img-style" [src]="make(this.user.id)"/>
+            <div class="mx-2">
+                <h2>Tài Khoản</h2>
+                <h4>{{user.firstName + " " + user.lastName}}</h4>
+            </div>
+        </div>
+        <div class="w-100 mt-4">
+            <button (click)="changePosition(index)" [ngClass]="{'mybtn' : index != this.indexChoiced}" class="w-100 py-1 d-flex" mat-stroked-button color="accent" *ngFor="let item of this.lstItems; let index =index">
+                <mat-icon class="" [innerHTML]="this.lstIcons[index]"></mat-icon>&#160;&#160;&#160;&#160;{{item}}
+            </button>
+        </div>
+    </div>
+    <div class="mx-5 w-100">
+        <router-outlet></router-outlet>
+        <!-- <app-edit-profile *ngIf="this.indexChoiced == 0" [user]="user"></app-edit-profile>
+        <app-show-bills *ngIf="this.indexChoiced == 1"></app-show-bills> -->
+    </div>
+</div>

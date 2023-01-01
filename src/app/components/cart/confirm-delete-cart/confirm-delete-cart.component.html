@@ -1,0 +1,9 @@
+<app-dark-overlay (click)="closeForm()"></app-dark-overlay>
+<div *ngIf="this.item" class="confirm-form p-4">
+    <h2>Xác Nhận Xóa Sản Phẩm <span class="text-warning">{{this.item.product.name}}</span> Trong Giỏ Hàng</h2>
+    <hr />
+    <div class="d-flex justify-content-between">
+        <button (click)="confirmDelete(item.cart.id)" mat-raised-button color="primary">Xác Nhận</button>
+        <button (click)="closeForm()" mat-raised-button color="warning">Hủy</button>
+    </div>
+</div>

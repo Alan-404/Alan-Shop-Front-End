@@ -1,0 +1,55 @@
+<div *ngIf="item">
+    <h1>Chỉnh Sửa Sản Phẩm</h1>
+    <hr />
+    <div class="d-flex">
+        <div class="w-50">
+            <h3>Thông Tin Sản Phẩm</h3>
+            <div class="d-flex">
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Tên Sản Phẩm</mat-label>
+                    <input (change)="getInfo($event)" name="name" matInput [value]="item.product.name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width w-100 mx-3">
+                    <mat-label>Giá Sản Phẩm</mat-label>
+                    <input (change)="getInfo($event)" name="price" type="number" matInput [value]="item.product.price">
+                </mat-form-field>
+            </div>
+            <mat-form-field class="example-full-width w-100">
+                <mat-label>Mô Tả Sản Phẩm</mat-label>
+                <textarea (change)="getInfo($event)" rows="5" name="description" matInput [value]="item.product.description"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Trạng Thái Sản Phẩm</mat-label>
+                <mat-select [value]="item.product.status">
+                  <mat-option [value]="true">Kinh Doanh</mat-option>
+                  <mat-option [value]="false">Ngừng Kinh Doanh</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button (click)="submitUpdate()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
+        </div>
+        <div class="mx-4">
+            <div class="bg-light p-5" style="border-radius: 15px;">
+                <h3>Giảm Giá Sản Phẩm</h3>
+                <div>
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Discount</mat-label>
+                        <input (change)="getInfo($event)" name="discount" type="number" min="0" max="100" matInput [value]="item.discount.value">
+                    </mat-form-field>
+                    <button (click)="submitDiscount()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="bg-light p-5" style="border-radius: 15px;">
+                <h3>Tồn Kho</h3>
+                <div>
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Hàng Tồn Kho</mat-label>
+                        <input (change)="getInfo($event)" name="discount" type="number"[min]="0" matInput [value]="item.warehouse.quantity">
+                    </mat-form-field>
+                    <button (click)="submitDiscount()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

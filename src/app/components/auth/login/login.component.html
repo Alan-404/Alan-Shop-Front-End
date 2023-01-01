@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <div>
+            <p>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input (keyup)="getInfo($event)" name="email" matInput>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input (keyup)="getInfo($event)" name="password" type="password" matInput>
+                </mat-form-field>
+            </p>
+
+
+
+            <div class="button">
+                <button (click)="submit()" mat-raised-button color="accent">Login</button>
+            </div>
+
+        </div>
+    </mat-card-content>
+</mat-card>

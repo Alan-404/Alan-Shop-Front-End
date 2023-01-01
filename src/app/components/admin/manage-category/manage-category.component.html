@@ -1,0 +1,8 @@
+<mat-icon [routerLink]="['/admin']" style="cursor: pointer;">backspace</mat-icon>
+<h1>Management Category</h1>
+<hr />
+<mat-tab-group #tabControl>
+    <mat-tab #show label="Show Categories"> <app-show-categories (showDetailCategory)="handleClickDetail($event)"></app-show-categories> </mat-tab>
+    <mat-tab label="Add Category"><app-add-category (addCategorySuccess)="handleUpdateCategories()"></app-add-category></mat-tab>
+    <mat-tab disabled label="Edit Category"><app-edit-category (editCategorySuccess)="handleUpdateCategories()"></app-edit-category></mat-tab>
+</mat-tab-group>

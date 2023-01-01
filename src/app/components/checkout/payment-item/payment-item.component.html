@@ -1,0 +1,8 @@
+<div class="bg-light p-3 d-flex mb-4" *ngIf="item">
+    <img class="img-style" src="http://localhost:8080/product/image/{{item.product.id}}?index=0"/>
+    <div class="mx-3">
+        <h2>{{item.product.name}}</h2>
+        <p>Số lượng: x{{item.cart.quantity}}</p>
+        <h3>Giá Sản Phẩm: {{(cal(item.product.price, item.discount.value)*item.cart.quantity).toLocaleString()}} đ</h3>
+    </div>
+</div>

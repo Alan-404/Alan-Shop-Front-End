@@ -1,0 +1,37 @@
+<h2>List Categories</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Modified At</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of this.responseGetCategories.categories; let index = index">
+            <th>{{index+1}}</th>
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>
+            <td>{{formatDateFunc(category.createdAt)}}</td>
+            <td>{{formatDateFunc(category.modifiedAt)}}</td>
+            <td>
+                <img class="img-style" src="http://localhost:8080/category/image?id={{category.id}}"/>
+            </td>
+            <td>
+                <button (click)="deleteCategory(category)" mat-stroked-button color="warn">Delete</button>
+                <button (click)="showDetail(category.id)" mat-stroked-button color="success">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<mat-paginator [length]="responseGetCategories.totalCategories"
+              [pageSize]="num"
+              [pageSizeOptions]="[num]"
+              aria-label="Select page"
+              (page)="nextPage($event)">
+</mat-paginator>
+<app-delete-category [category]="categoryFocus" (deleteCategorySuccess)="handleSuccessDeleteCategory()" (handleClose)="closeDeleteForm()" *ngIf="showConfirm"></app-delete-category>

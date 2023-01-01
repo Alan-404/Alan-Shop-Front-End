@@ -1,0 +1,31 @@
+.img-style{
+    width: 3vw;
+    height: 6vh;
+    border-radius: 50%;
+}
+
+.input-message{
+    width: 75%;
+    border-radius: 25px;
+    outline: none;
+    background-color: rgb(244, 244, 244);
+}
+
+.input-message:focus{
+    border-color: rgb(0, 157, 255);
+}
+
+.msg-item{
+    background-color: rgb(245, 249, 246);
+    border-radius: 25px;
+    width: fit-content;
+    max-width: 75%;
+}
+
+.my-msg-item{
+    background-color: rgb(78, 182, 224);
+    color: white;
+    border-radius: 25px;
+    width: fit-content;
+    max-width: 75%;
+}

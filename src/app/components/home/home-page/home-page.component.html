@@ -1,0 +1,12 @@
+<div class="mb-3" *ngIf="this.banners.length != 0">
+    <app-carousel-banner [banners]="banners"></app-carousel-banner>
+</div>
+
+<div class="text-center border p-2">
+    <div class="d-flex justify-content-between flex-wrap align-content-start">
+        <div *ngFor="let product of this.products; let index = index">
+            <app-card-product [product]="product"></app-card-product>
+        </div>
+    </div>
+    <button (click)="moreProducts()" class="mt-4" mat-flat-button color="warn">Xem Thêm ... </button>
+</div>

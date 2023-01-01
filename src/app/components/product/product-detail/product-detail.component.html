@@ -1,0 +1,36 @@
+<div class="d-flex" *ngIf="this.product && this.checkNull == false">
+    <div>
+        <img class="img-style" src="http://localhost:8080/product/image/{{this.addCartData.productId}}?index={{this.indexImage}}"/>
+        <div class="d-flex mt-2">
+            <img (click)="changeImageShow(index)" *ngFor="let image of converter(this.product.numMedia); let index = index" class="img-item" src="http://localhost:8080/product/image/{{this.addCartData.productId}}?index={{index}}"/>
+        </div>
+    </div>
+    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+    <div>
+        <h1>{{this.product.product.name}}</h1>
+        <div class="p-3 price-frame w-50">
+            <h1>Giá: <span class="text-info">{{calculate(this.product.product.price, this.product.discount.value).toLocaleString()}} đ</span></h1>
+            <div *ngIf="this.product.discount.value != 0">
+                <p><span class="text-decoration-line-through">{{this.product.product.price.toLocaleString()}} đ</span> &#160; <span class="text-danger">-{{this.product.discount.value}}%</span></p>
+            </div>
+        </div>
+        <div class="mt-2">
+            <div *ngIf="this.product.warehouse.quantity >= 20">Còn Hàng</div>
+            <div *ngIf="this.product.warehouse.quantity < 20 && this.product.warehouse.quantity > 0">Còn {{this.product.warehouse.quantity}} sản phẩm</div>
+            <div class="text-danger" *ngIf="this.product.warehouse.quantity == 0">Hết hàng</div>
+        </div>
+        <div class="mt-2">
+            <h2>Mô Tả:</h2>
+            <p>{{this.product.product.description}}</p>
+        </div>
+        <div *ngIf="this.product.warehouse.quantity != 0" class="mt-2">
+            <div>
+                <p>Số lượng: </p>
+                <mat-form-field class="example-full-width">
+                    <input (change)="getQuantity($event)" matInput type="number" [value]="numProduct" min="0" max="{{this.product.warehouse.quantity}}">
+                </mat-form-field>
+            </div>
+            <button (click)="addCartSubmit()" mat-flat-button color="accent">Thêm Vào Giỏ Hàng</button>
+        </div>
+    </div>
+</div>

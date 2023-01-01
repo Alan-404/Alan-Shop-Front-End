@@ -1,0 +1,49 @@
+<div class="d-flex flex-column w-25 register-form bg-light p-3">
+    <h1 class="text-center">Register User for Shop</h1>
+    <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input (change)="getInfor($event)" name="firstName" matInput>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input (change)="getInfor($event)" name="lastName" matInput>
+    </mat-form-field>
+    <div class="d-flex">
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input (change)="getInfor($event)" name="email" matInput>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Phone</mat-label>
+            <input (change)="getInfor($event)" name="phone" matInput>
+        </mat-form-field>
+    </div>
+    <div class="d-flex">
+        <h3>Giới Tính</h3>
+        <mat-radio-group (change)="getInforGender($event.value)" class="mx-5" aria-label="Select an option">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button class="mx-3" value="female">Female</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input (change)="getInfor($event)" name="address" matInput>
+    </mat-form-field>
+    <div>
+        <mat-form-field class="example-full-width w-100">
+            <mat-label>Password</mat-label>
+            <input (change)="getInfor($event)" name="password" type="password" matInput>
+        </mat-form-field>
+        <p>{{this.messageStrengthPassword}}</p>
+    </div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Confirme Password</mat-label>
+        <input (change)="getInfor($event)" name="confirmPassword" type="password" matInput>
+    </mat-form-field>
+    <div>
+        <label for="upload-photo"><mat-icon>add_a_photo</mat-icon></label>
+        <input (change)="uploadImage($event)" type="file" name="photo" id="upload-photo" />
+    </div>
+    <img [src]="imageShow" class="img-show" />
+    <button (click)="submitRegister()" class="mt-2" mat-raised-button color="primary">Register</button>
+</div>

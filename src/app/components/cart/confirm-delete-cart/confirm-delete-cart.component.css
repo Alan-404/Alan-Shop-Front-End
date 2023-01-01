@@ -1,0 +1,9 @@
+.confirm-form{
+    background-color: beige;
+    position:fixed;
+    top: 25vh;
+    left: 40vw;
+    border-radius: 25px;
+    width: 25vw;
+    z-index: 100;
+}

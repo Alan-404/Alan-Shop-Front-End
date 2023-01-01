@@ -1,0 +1,18 @@
+<div class="bg-light mb-3 p-2" style="border-radius: 15px;">
+    <h2>Mã Đơn Hàng: <span class="text-info">{{item.bill.id}}</span></h2>
+    <hr />
+    <p>Số lượng sản phẩm: <span>{{calNumProducts(item.orders)}}</span></p>
+    <div class="d-flex">
+        <div *ngFor="let order of this.item.orders">
+            <div class="lb-quantity p-1">x{{order.quantity}}</div>
+            <img class="image-style" src="http://localhost:8080/product/image/{{order.productId}}?index=0"/>
+            
+            &#160;
+        </div>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-between">
+        <h2>Tổng Tiền: </h2>
+        <h2 class="text-warning">{{this.item.bill.price.toLocaleString()}} đ</h2>
+    </div>
+</div>
