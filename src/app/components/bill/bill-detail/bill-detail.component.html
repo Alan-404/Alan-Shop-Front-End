@@ -1,0 +1,8 @@
+<div>
+    <h1>Mã Đơn Hàng: <span class="text-primary">{{this.billInfo.bill.id}}</span></h1>
+    <div *ngFor="let order of this.billInfo.orders">
+        <app-order-item [orderInfo]="order"></app-order-item>
+    </div>
+    <hr />
+    <h1>Tổng Đơn Hàng: <span class="text-info">{{this.billInfo.bill.price.toLocaleString()}} đ</span></h1>
+</div>

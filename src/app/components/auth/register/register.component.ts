@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
   imageShow: any = ""
   messageStrengthPassword: string = ""
 
+  passwordStrong:Number = -1
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -31,13 +33,6 @@ export class RegisterComponent implements OnInit {
 
     if (name == "firstName" || name == "lastName" || name == "email" || name == "phone" || name == "address" || name == "password"){
       this.userInfo[name] = value;
-    }
-    if (name == "password"){
-      this.accountService.checkStrengthPassword(value).subscribe(response => {
-        if (response == 0){
-          this.messageStrengthPassword = "Week Password"
-        }
-      })
     }
     if (name == "confirmPassword"){
       this.confirmPass = value
@@ -59,6 +54,15 @@ export class RegisterComponent implements OnInit {
     reader.onload = (_event) => {
       this.imageShow = reader.result
     }
+  }
+
+  checkStrengthPassword(){
+    if (this.userInfo.password == ""){
+      return;
+    }
+    this.accountService.checkStrengthPassword(this.userInfo.password).subscribe(response => {
+      this.passwordStrong = response
+    })
   }
 
   submitRegister(){

@@ -21,8 +21,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>Trạng Thái Sản Phẩm</mat-label>
                 <mat-select [value]="item.product.status">
-                  <mat-option [value]="true">Kinh Doanh</mat-option>
-                  <mat-option [value]="false">Ngừng Kinh Doanh</mat-option>
+                  <mat-option [value]="true" (click)="this.handleBussineesForm()">Kinh Doanh</mat-option>
+                  <mat-option [value]="false" (click)="this.handleBussineesForm()">Ngừng Kinh Doanh</mat-option>
                 </mat-select>
             </mat-form-field>
             <button (click)="submitUpdate()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
@@ -45,11 +45,40 @@
                 <div>
                     <mat-form-field class="example-full-width w-100">
                         <mat-label>Hàng Tồn Kho</mat-label>
-                        <input (change)="getInfo($event)" name="discount" type="number"[min]="0" matInput [value]="item.warehouse.quantity">
+                        <input readonly (change)="getInfo($event)" name="discount" type="number"[min]="0" matInput [value]="item.warehouse.quantity">
+                    </mat-form-field>
+                </div>
+                <mat-radio-group aria-label="Select an option" class="d-flex flex-column">
+                    <mat-radio-button (change)="this.openWarehouseForm($event)" [checked]="showForm == 0" class="mb-2" value="0">Thêm Hàng</mat-radio-button>
+                    <mat-radio-button (change)="this.openWarehouseForm($event)" [checked]="showForm == 1" class="mb-2" value="1">Trừ Hàng</mat-radio-button>
+                    <mat-radio-button (change)="this.openWarehouseForm($event)" [checked]="showForm == 2" value="2">Điều Chỉnh Số Lượng</mat-radio-button>
+                </mat-radio-group>
+                <div class="mt-3" *ngIf="this.showForm == 0">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Thêm Hàng</mat-label>
+                        <input (change)="getInfo($event)" name="discount" type="number"[min]="0" matInput>
+                    </mat-form-field>
+                    <button (click)="submitDiscount()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
+                </div>
+                <div class="mt-3" *ngIf="this.showForm == 1">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Trừ Hàng</mat-label>
+                        <input (change)="getInfo($event)" name="discount" type="number"[min]="0" matInput>
+                    </mat-form-field>
+                    <button (click)="submitDiscount()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
+                </div>
+                <div class="mt-3" *ngIf="this.showForm == 2">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Điều Chỉnh Số Lượng</mat-label>
+                        <input (change)="getInfo($event)" name="discount" type="number"[min]="0" matInput>
                     </mat-form-field>
                     <button (click)="submitDiscount()" class="d-flex" mat-stroked-button color="primary">Cập Nhật</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div *ngIf="this.bussinessForm">
+    <app-bussiness-handle (closeBussiness)="this.handleBussineesForm()"></app-bussiness-handle>
 </div>

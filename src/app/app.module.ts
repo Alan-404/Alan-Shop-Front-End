@@ -59,6 +59,15 @@ import { BillItemComponent } from './components/bill/bill-item/bill-item.compone
 import { ChatRoomComponent } from './components/chat/chat-room/chat-room.component';
 import { ChatPageComponent } from './components/chat/chat-page/chat-page.component';
 import { UserChatItemComponent } from './components/chat/user-chat-item/user-chat-item.component'
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { UserChatInfoComponent } from './components/chat/user-chat-info/user-chat-info.component';
+import { BussinessHandleComponent } from './components/product/bussiness-handle/bussiness-handle.component';
+import { BillDetailComponent } from './components/bill/bill-detail/bill-detail.component';
+import { RequireCommentComponent } from './components/comment/require-comment/require-comment.component';
+import { OrderItemComponent } from './components/order/order-item/order-item.component';
+import { AddReviewComponent } from './components/review/add-review/add-review.component';
+
+
 
 const appRoutes: Routes = [
   {path: "auth", component: AuthComponent, children: [
@@ -76,6 +85,7 @@ const appRoutes: Routes = [
       {path: "profile", component: EditProfileComponent},
       {path: "bill", component: ShowBillsComponent}
     ]},
+    {path: "bill", component: BillDetailComponent},
     {path: "addProduct", component: AddProductComponent},
     {path: "product", component: ProductDetailComponent},
     {path: "cart", component: ShowCartsComponent},
@@ -130,7 +140,13 @@ const appRoutes: Routes = [
     BillItemComponent,
     ChatRoomComponent,
     ChatPageComponent,
-    UserChatItemComponent
+    UserChatItemComponent,
+    UserChatInfoComponent,
+    BussinessHandleComponent,
+    BillDetailComponent,
+    RequireCommentComponent,
+    OrderItemComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -152,7 +168,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatBadgeModule,
     MatButtonToggleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,7 +23,7 @@ export class AccountService {
   }
 
   checkStrengthPassword(password: String):Observable<Number>{
-    return this.http.post<Number>(`${apiUrl}/account/password/strength`, {password})
+    return this.http.post<Number>(`http://localhost:8000/password/check`, {password})
   }
 
   changePassword(data: ChangePasswordDTO):Observable<Response>{

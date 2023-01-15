@@ -1,0 +1,7 @@
+.myForm{
+    position: fixed;
+    left: 45vw;
+    top: 25vh;
+    z-index: 100;
+    border-radius: 25px;
+}

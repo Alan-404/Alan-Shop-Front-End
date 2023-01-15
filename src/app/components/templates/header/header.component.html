@@ -8,7 +8,7 @@
         <button [routerLink]="['cart']" class="mx-3" mat-raised-button color="primary" matBadge="{{getNum()}}" matBadgePosition="after" matBadgeColor="accent">
             <mat-icon>shopping_cart</mat-icon>
         </button>
-        <button [routerLink]="['chat']" class="mx-3" mat-raised-button color="primary">
+        <button (click)="goChatPage()" class="mx-3" mat-raised-button color="primary">
             <mat-icon> message</mat-icon>
         </button>
         <button mat-button [matMenuTriggerFor]="menu">

@@ -4,4 +4,5 @@ export class Order{
     productId: string = "";
     price: number = 0.0;
     quantity: number = 0;
+    reviewed: boolean = false;
 }

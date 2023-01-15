@@ -1,31 +1,49 @@
-.img-style{
+.img-style {
     width: 3vw;
     height: 6vh;
     border-radius: 50%;
 }
 
-.input-message{
+.input-message {
     width: 75%;
     border-radius: 25px;
     outline: none;
     background-color: rgb(244, 244, 244);
 }
 
-.input-message:focus{
+.input-message:focus {
     border-color: rgb(0, 157, 255);
 }
 
-.msg-item{
+.msg-item {
     background-color: rgb(245, 249, 246);
     border-radius: 25px;
     width: fit-content;
     max-width: 75%;
 }
 
-.my-msg-item{
+.my-msg-item {
     background-color: rgb(78, 182, 224);
     color: white;
     border-radius: 25px;
     width: fit-content;
     max-width: 75%;
+}
+
+.img-item{
+    width: 2vw;
+    height: 4vh;
+    border-radius: 50%;
+}
+
+.chat-frame {
+    height: 68vh;
+    width: 100%;
+    border: none;
+    outline: none;
+    border: 1px solid black;
+}
+
+.example-item {
+    height: 50px;
 }

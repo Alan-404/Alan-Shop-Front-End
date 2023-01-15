@@ -4,7 +4,7 @@ import { Observable} from 'rxjs';
 import { apiUrl } from '../utils/constants';
 import { Response } from '../interfaces/response';
 import { CartProduct } from '../interfaces/cart';
-import { PaginationBills } from '../interfaces/bill';
+import { BillDetail, InfoBill, PaginationBills } from '../interfaces/bill';
 const headerOptions = {
   headers: new HttpHeaders({
     'Authorization': `Bearer ${localStorage.getItem('shop')}`
@@ -26,5 +26,9 @@ export class BillService {
 
   getMyBills(page: Number, num: Number):Observable<PaginationBills>{
     return this.http.get<PaginationBills>(`${apiUrl}/bill/my?page=${page}&num=${num}`, headerOptions)
+  }
+
+  getBillById(billId: String):Observable<BillDetail>{
+    return this.http.get<BillDetail>(`${apiUrl}/bill/${billId}`, headerOptions)
   }
 }

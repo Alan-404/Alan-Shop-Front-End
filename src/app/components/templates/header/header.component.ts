@@ -99,4 +99,14 @@ export class HeaderComponent implements OnInit {
     return temp
   }
 
+  goChatPage(){
+    console.log(localStorage.getItem('chat-with'))
+    if (localStorage.getItem('chat-with') && localStorage.getItem('room-chat')){
+      this.router.navigate(['/chat/room'], {queryParams: {'id': localStorage.getItem('room-chat'), 'with': localStorage.getItem('chat-with')}})
+    }
+    else{
+      this.router.navigate(['/chat'])
+    }
+  }
+
 }

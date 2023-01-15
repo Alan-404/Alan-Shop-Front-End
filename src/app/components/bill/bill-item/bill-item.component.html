@@ -1,5 +1,5 @@
 <div class="bg-light mb-3 p-2" style="border-radius: 15px;">
-    <h2>Mã Đơn Hàng: <span class="text-info">{{item.bill.id}}</span></h2>
+    <h2>Mã Đơn Hàng: <span [routerLink]="['/bill']" class="text-info" [queryParams]="{'id': item.bill.id}" style="cursor: pointer;">{{item.bill.id}}</span></h2>
     <hr />
     <p>Số lượng sản phẩm: <span>{{calNumProducts(item.orders)}}</span></p>
     <div class="d-flex">

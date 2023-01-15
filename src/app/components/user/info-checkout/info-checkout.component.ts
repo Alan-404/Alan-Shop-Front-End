@@ -69,7 +69,7 @@ export class InfoCheckoutComponent implements OnInit {
       this.submitOrder.emit()
     }
     else{
-      this.router.navigate(['/home/payment'])
+      this.router.navigate(['/payment'])
     }
   }
   

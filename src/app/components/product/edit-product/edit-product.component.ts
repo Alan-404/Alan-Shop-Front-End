@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { InfoProduct } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { DiscountService } from 'src/app/services/discount.service';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-edit-product',
@@ -15,6 +16,11 @@ export class EditProductComponent implements OnInit {
 
   productId: string = ""
   item: InfoProduct | undefined
+
+  showForm: number = -1
+  inputWarehouse: number = 0
+
+  bussinessForm: boolean = false
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -84,4 +90,14 @@ export class EditProductComponent implements OnInit {
       })
     }
   }
+
+  openWarehouseForm(e: MatRadioChange){
+    console.log(e.value)
+    this.showForm = e.value
+  }
+
+  handleBussineesForm(){
+    this.bussinessForm = !this.bussinessForm
+  }
+
 }

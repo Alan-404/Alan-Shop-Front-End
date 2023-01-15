@@ -32,6 +32,9 @@ export class ShowCartsComponent implements OnInit {
     this.cartService.getMyCart().subscribe(response => {
       this.carts = response
       var count = 0
+      if (this.carts.length == 0){
+        return;
+      }
       this.checked = true
       for (let item of this.carts){
         count += item.cart.quantity

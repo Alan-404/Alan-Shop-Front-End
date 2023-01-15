@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { CommonService } from 'src/app/services/common.service';
+import { Message } from 'src/app/models/message';
 
 @Component({
   selector: 'app-chat-room',
@@ -14,33 +15,48 @@ export class ChatRoomComponent implements OnInit {
 
   user: User = new User()
 
+  me: User = new User()
 
-  messages: Array<{senderId: string, roomId: string, message: string}> = []
+  messages: Array<Message> = []
   storageArray = []
   inputMessage: string = ""
 
-  getUser(id: string){
+
+
+  getPrevMessages(roomId: string) {
+    this.chatService.getMessagesByRoom(roomId).subscribe(response => {
+      this.messages = response
+    })
+  }
+
+  getUser(id: string) {
     this.userService.getUserById(id).subscribe(response => {
-      console.log(response)
       this.user = response
     })
   }
 
 
-  config(){
+
+  config() {
     this.activatedRoute.queryParams.subscribe(params => {
-      if (params['with']){
-        this.getUser(params['with'])
-      }
-      if (params['id']){
-        this.roomId = params['id']
-        this.chatService.joinRoom({roomId: this.roomId})
-        this.chatService.getMessage().subscribe(response => {
-          console.log(response)
-          this.messages.push(response)
-          console.log(this.messages)
+      if (params['with']) {
+        this.userService.getUserById(params['with']).subscribe(rep => {
+          if (rep.id != "") {
+            this.user = rep
+            this.userService.getUserByToken().subscribe(res => {
+              this.me = res
+              this.roomId = params['id']
+              this.chatService.joinRoom({ roomId: this.roomId, userId: this.me.id })
+              this.getPrevMessages(this.roomId)
+              this.chatService.getMessage().subscribe(response => {
+                console.log(response)
+                this.messages.push(response)
+              })
+            })
+          }
         })
       }
+
     })
   }
 
@@ -57,16 +73,17 @@ export class ChatRoomComponent implements OnInit {
   }
 
 
-  actionInput(e: Event){
+  actionInput(e: Event) {
     this.inputMessage = (e.target as HTMLInputElement).value
   }
 
-  actionSend(){
-    this.chatService.sendMessage({roomId: this.roomId, message: this.inputMessage, senderId: this.getMyId()})
+  actionSend() {
+    console.log(Date.now())
+    this.chatService.sendMessage({ roomId: this.roomId, content: this.inputMessage, sender: this.getMyId() })
     this.inputMessage = ""
   }
 
-  getMyId(){
+  getMyId() {
     var id = ""
     this.commonService.userId$.subscribe(data => {
       id = data
@@ -74,5 +91,7 @@ export class ChatRoomComponent implements OnInit {
 
     return id
   }
+
+
 
 }

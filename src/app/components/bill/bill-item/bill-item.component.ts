@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InfoBill } from 'src/app/interfaces/bill';
-import { Bill } from 'src/app/models/bill';
 import { Order } from 'src/app/models/order';
 
 @Component({

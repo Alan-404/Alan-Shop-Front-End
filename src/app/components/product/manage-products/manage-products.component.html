@@ -1,4 +1,7 @@
-<h2>Quản Lý Sản Phẩm Của Bạn</h2>
+<div class="d-flex justify-content-between">
+    <h2>Quản Lý Sản Phẩm Của Bạn</h2>
+    <mat-icon [routerLink]="['/addProduct']" style="cursor: pointer;">library_add</mat-icon>
+</div>
 <hr />
 <div>
     <div *ngFor="let item of this.productItems" style="border-radius: 10px;" class="bg-light p-2 mb-5 d-flex">
@@ -31,7 +34,7 @@
                     <p class="text-danger" *ngIf="!item.product.status">Ngừng Kinh Doanh</p>
                 </div>
                 <div>
-                    <button [routerLink]="['/home/editProduct']" [queryParams]="{'id': item.product.id}" mat-raised-button color="primary"><mat-icon>edit</mat-icon> Sửa Thông Tin</button>
+                    <button [routerLink]="['/editProduct']" [queryParams]="{'id': item.product.id}" mat-raised-button color="primary"><mat-icon>edit</mat-icon> Sửa Thông Tin</button>
                 </div>
             </div>
         </div>

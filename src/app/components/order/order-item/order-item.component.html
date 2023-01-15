@@ -1,0 +1,14 @@
+<div class="bg-light p-3 mb-3">
+    <div class="d-flex justify-content-between">
+        <h2>{{this.orderInfo.product.name}}</h2>
+        <img class="img-style" src="http://localhost:8080/product/image/{{this.orderInfo.product.id}}?index=0"/>
+    </div>
+    <hr />
+    <p>{{this.orderInfo.order.price.toLocaleString()}}</p>
+    <p>x {{this.orderInfo.order.quantity}}</p>
+    <hr />
+    <h2>Tổng Tiền: <span class="text-info">{{calculateSumPrice(this.orderInfo.order.price, this.orderInfo.order.quantity).toLocaleString()}} đ</span></h2>
+    <div *ngIf="this.orderInfo.order.reviewed == false">
+        <app-add-review [orderInfo]="this.orderInfo"></app-add-review>
+    </div>
+</div>

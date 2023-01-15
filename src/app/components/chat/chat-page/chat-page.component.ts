@@ -40,18 +40,19 @@ export class ChatPageComponent implements OnInit {
   }
 
   goChatRoom(id: string){
-    console.log(id)
     var my = ""
     this.commonService.userId$.subscribe(data => {
       my = data
     })
     this.chatRoomService.entryRoom(my, id).subscribe(response => {
-      console.log(response.room)
       if (response.success){
+        localStorage.setItem('room-chat', response.room._id)
+        localStorage.setItem('chat-with', id)
         this.router.navigate(['/chat/room'], {queryParams: {'id': response.room._id, 'with': id}})
       }
     })
     //this.router.navigate(['/chat/room'], {queryParams: {id: id}})
   }
+
 
 }
